@@ -2,7 +2,7 @@ package com.jobs.wettai.dao;
 import com.jobs.wettai.enumeration.Status;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.*;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -70,6 +70,20 @@ public class JobsDAO {
   private String feedback;
 
   @Column(
+      name="favourite",
+      columnDefinition = "boolean default false"
+  )
+  private boolean favourite;
+
+  @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @JoinTable(
+      name="job_keywords",
+      joinColumns = @JoinColumn(name = "job_id"),
+      inverseJoinColumns = @JoinColumn(name="keyword_id")
+  )
+  private Set<KeywordsDAO> jobsKeyword = new HashSet<>();
+
+  @Column(
       name = "user_id",
       nullable = false
   )
@@ -82,6 +96,7 @@ public class JobsDAO {
                  String jobAccessLink,
                  String jobDescription,
                  String feedback,
+                 Boolean favourite,
                  Long userID) {
     this.jobTitle = jobTitle;
     this.appliedDate = appliedDate;
@@ -90,6 +105,7 @@ public class JobsDAO {
     this.jobAccessLink = jobAccessLink;
     this.jobDescription = jobDescription;
     this.feedback = feedback;
+    this.favourite = favourite;
     this.userID = userID;
   }
 
@@ -103,6 +119,8 @@ public class JobsDAO {
 
   public JobsDAO() {
   }
+
+
 
   public Long getId() {
     return id;
@@ -168,6 +186,26 @@ public class JobsDAO {
     this.feedback = feedback;
   }
 
+  public boolean isFavourite() {
+    return favourite;
+  }
+
+  public void setFavourite(boolean favourite) {
+    this.favourite = favourite;
+  }
+
+  public Set<KeywordsDAO> getJobsKeyword() {
+    return jobsKeyword;
+  }
+
+//  public void setJobsKeyword(Set<KeywordsDAO> jobsKeyword) {
+//    this.jobsKeyword = jobsKeyword;
+//  }
+
+  //  public void addKeyword(KeywordsDAO keywordsDAO){
+//    jobsKeyword.add(keywordsDAO);
+//  }
+
   public Long getUserID() {
     return userID;
   }
@@ -186,6 +224,7 @@ public class JobsDAO {
         ", jobAccessLink='" + jobAccessLink + '\'' +
         ", jobDescription='" + jobDescription + '\'' +
         ", feedback='" + feedback + '\'' +
+        ", favourite='" + favourite + '\'' +
         ", userID=" + userID +
         '}';
   }

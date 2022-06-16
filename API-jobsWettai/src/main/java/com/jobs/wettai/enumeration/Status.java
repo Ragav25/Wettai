@@ -4,7 +4,8 @@ public enum Status {
   INTERVIEWING("INTERVIEWING"),
   SELECTED("SELECTED"),
   NOT_SELECTED("NOT_SELECTED"),
-  APPLIED("APPLIED");
+  APPLIED("APPLIED"),
+  HIT_LIST("HITLIST");
 
   private final String status;
 

@@ -1,0 +1,29 @@
+{
+    "status": [
+        {
+            "key": "",
+            "value": "Status"
+        },
+       {
+            "key": "APPLIED",
+            "value": "applied"
+        },
+        {
+            "key": "SELECTED",
+            "value": "selected"
+        },
+        {
+            "key": "HITLIST",
+            "value": "hit-list"
+        },
+        {
+            "key": "INTERVIEWING",
+            "value": "interviewing"
+        },
+        {
+            "key": "NOTSELECTED",
+            "value": "not-selected"
+        } 
+    ]
+
+}

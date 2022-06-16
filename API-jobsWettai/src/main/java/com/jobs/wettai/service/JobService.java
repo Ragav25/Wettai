@@ -1,6 +1,7 @@
 package com.jobs.wettai.service;
 
 import com.jobs.wettai.dao.JobsDAO;
+import com.jobs.wettai.dto.JobDto;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +14,7 @@ public interface JobService {
 
   Optional<JobsDAO> getJobByID(Long jobID);
 
-  void addJob(JobsDAO jobsDAO);
+  void addJob(JobDto jobDto);
 
   void deleteJob(Long jobID);
 

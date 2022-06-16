@@ -1,24 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
+import HomeMainContainer from './components/homeMainContainer/HomeMainContainer';
+import NavBar from './components/NavBar';
+import JobCollectionsMain from './components/UserHome/JobCollectionsMain';
 
+const MainBody = styled.div`
+background: var(--theme-secondary);
+box-sizing: border-box;
+height:100%;
+`;
 
+const InnerMainBody = styled.div`
+background: var(--theme-tertiary);
+box-sizing: border-box;
+height:100%;
+`;
 
-function App() {
-
-  const MainBody = styled.div`
-    background: #F8F8F8;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height:100vh;
-  `;
-
-  const InitialText = styled.h1`
-  `;
+const App = () => { 
   return (
    <MainBody>
-     <InitialText>WETTAI API - UI INTEGREATION</InitialText>
+     <InnerMainBody>
+      <NavBar />
+      {/* <HomeMainContainer /> */}
+      <JobCollectionsMain />
+     </InnerMainBody>
    </MainBody>
   );
 }

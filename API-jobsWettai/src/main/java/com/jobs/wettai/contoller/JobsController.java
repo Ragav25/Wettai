@@ -1,6 +1,8 @@
 package com.jobs.wettai.contoller;
 
 import com.jobs.wettai.dao.JobsDAO;
+import com.jobs.wettai.dao.KeywordsDAO;
+import com.jobs.wettai.dto.JobDto;
 import com.jobs.wettai.service.JobsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path = "user/jobs")
 public class JobsController {
@@ -35,8 +38,8 @@ public class JobsController {
   }
 
   @PostMapping(path = "/postajob")
-  public void addNewJob(@RequestBody JobsDAO jobsDAO){
-    jobsServiceImpl.addJob(jobsDAO);
+  public void addNewJob(@RequestBody JobDto jobDto){
+    jobsServiceImpl.addJob(jobDto);
   }
 
   @DeleteMapping(path = "/delete/{jobID}")
